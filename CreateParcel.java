@@ -1,18 +1,21 @@
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.io.FileInputStream;			//retreiveing saved file from storage
+import java.io.FileNotFoundException;	//exception caused when file not found
+import java.io.FileOutputStream;		//saving file into storage
+import java.io.IOException;				//exception caused during input output operation
+import java.io.ObjectInputStream;		//retreiveing saved object from storage
+import java.io.ObjectOutputStream;		//saving object into storage
+import java.io.Serializable;			//converting object into byte stream
+import java.util.ArrayList;				//for creating array list object
+import java.util.List;					//for creating list object
+import java.util.Scanner;				//for creating scanner object
 
+//creating class
 public class CreateParcel {
-
+		
+	//creating main method
 	public static void main(String args[]) throws IOException, ClassNotFoundException {
 
+		//defining variables
 		String pickupDate;
 		String pickupTime;
 		String pickupAddress;
@@ -23,9 +26,13 @@ public class CreateParcel {
 
 		String parcelWeight;
 
+		//creating parcel object
 		Parcel parcel = new Parcel();
+		
+		//creating list for parcel objects
 		List<Parcel> orderList = new ArrayList();
-
+		
+		//creating list for customer objects
 		List<Customer> list = new ArrayList<>();
 		Customer cust1 = new Customer("123", "456", "789", "Utkarsh Jain", "utkarshjain528@gmail.com", "9565432188",
 				"Lalitpur(U.P.)");
@@ -38,14 +45,17 @@ public class CreateParcel {
 		Customer cust5 = new Customer("456", "789", "101", "Divya Rawal", "divyarawal@gmail.com", "7089150418",
 				"Naagda(M.P.)");
 
+		//adding customer object into list 
 		list.add(cust1);
 		list.add(cust2);
 		list.add(cust3);
 		list.add(cust4);
 		list.add(cust5);
 
+		//creating scanner object to take input from user
 		Scanner sc = new Scanner(System.in);
 
+		//getting various inputs
 		System.out.println("Welcom to Online Parcel System");
 		System.out.println("");
 
@@ -56,6 +66,7 @@ public class CreateParcel {
 		System.out.println("");
 
 		String choice = sc.nextLine();
+		//using switch case for getting sender info
 		switch (choice) {
 		case "1":
 			System.out.println("*ENTER SENDER DETAILS:*");
@@ -158,6 +169,7 @@ public class CreateParcel {
 		System.out.println("3. Driving License");
 
 		String choice2 = sc.nextLine();
+		//using switch case for getting receiver info
 		switch (choice2) {
 		case "1":
 			System.out.println("*ENTER RECEIVER DETAILS:**");
@@ -257,6 +269,7 @@ public class CreateParcel {
 		System.out.println("Your Order Request Is Successfully Submitted :) ");
 		System.out.println("*YOUR ORDER ID WILL BE:**");
 
+		//generating random order id
 		parcel.setParcelId(getAlphaNumericString(10));
 		System.out.println("Order ID: " + parcel.getParcelId());
 		System.out.println("");
@@ -269,6 +282,8 @@ public class CreateParcel {
 		  System.out.println("Do you want to view your order.");
 		  System.out.println("1. YES"); System.out.println("2. NO"); String choice3 =
 		  sc.nextLine(); 
+		  
+		  //using switch for view order
 		  switch (choice3){
 		  case "1":
 			  readOrderFromFile();
@@ -284,6 +299,8 @@ public class CreateParcel {
 		System.out.println("1. YES");
 		System.out.println("2. NO");
 		String choice4 = sc.nextLine();
+		
+		//using switch for cancel order
 		switch (choice4) {
 		case "1":
 			orderList.clear();
@@ -294,13 +311,14 @@ public class CreateParcel {
 			  break;
 		}
 	}
-
+		//reteriving file from storage
 	private static void readOrderFromFile() throws IOException, ClassNotFoundException {
-		// TODO Auto-generated method stub
+	
 		FileInputStream fis = new FileInputStream("Order.txt");
 		ObjectInputStream in = new ObjectInputStream(fis);
 		Parcel parcel = (Parcel) in.readObject();
 
+		//showing order details for customer
 		System.out.println("*YOUR ORDER DETAILS:**");
 
 		System.out.println("Sender Details:");
@@ -343,6 +361,7 @@ public class CreateParcel {
 
 	}
 
+	//saving object into file
 	private static void saveOrderIntoFile(Parcel parcel) throws IOException {
 		FileOutputStream fos = new FileOutputStream("Order.txt");
 		ObjectOutputStream out = new ObjectOutputStream(fos);
@@ -372,6 +391,7 @@ public class CreateParcel {
 
 }
 
+ 					//creating class for customer object
 class Customer {
 
 	private String aadharNumber;
@@ -382,6 +402,7 @@ class Customer {
 	private String mobile;
 	private String address;
 
+	//creating public constructor
 	public Customer(String aadharNumber, String voterNumber, String dLNumber, String name, String mail, String mobile,
 			String address) {
 		super();
@@ -394,6 +415,7 @@ class Customer {
 		this.address = address;
 	}
 
+	//creating various getters and setters 
 	public String getVoterNumber() {
 		return voterNumber;
 	}
@@ -452,8 +474,11 @@ class Customer {
 
 }
 
+                                //creating class for parcel object
+			//implementing serialization to convert this object into byte stream
 class Parcel implements Serializable {
 
+	//defining variables
 	private String senderName;
 	private String senderEmail;
 	private String senderMobile;
@@ -473,6 +498,7 @@ class Parcel implements Serializable {
 	private String parcelId;
 	private String parcelWeight;
 
+	//creating various getters and setters
 	public String getSenderName() {
 		return senderName;
 	}
