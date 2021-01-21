@@ -116,7 +116,7 @@ public class CreateParcel {
 			String DLNumber = sc.nextLine();
 			for (Customer cust : list) {
 				if (DLNumber.equals(cust.getDLNumber())) {
-					System.out.println(" Driving Licence Number Found");
+					System.out.println("DL Number Found");
 
 					System.out.println("Name: " + cust.getName());
 					parcel.setSenderName(cust.getName());
@@ -171,7 +171,7 @@ public class CreateParcel {
 			String aadharNumber = sc.nextLine();
 			for (Customer cust : list) {
 				if (aadharNumber.equals(cust.getAadharNumber())) {
-					System.out.println("Aadhar number Found");
+					System.out.println("Aadhar Number Found");
 
 					System.out.println("Name: " + cust.getName());
 					parcel.setReceiverName(cust.getName());
