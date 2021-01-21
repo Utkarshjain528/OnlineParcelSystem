@@ -48,7 +48,7 @@ public class CreateParcel {
 
 		Scanner sc = new Scanner(System.in);
 
-		System.out.println("Welcom to Online Parcel System");
+		System.out.println("Welcome to Online Parcel System");
 		System.out.println("");
 
 		System.out.println("Select Your ID Proof");
@@ -93,7 +93,7 @@ public class CreateParcel {
 			String voterNumber = sc.nextLine();
 			for (Customer cust : list) {
 				if (voterNumber.equals(cust.getVoterNumber())) {
-					System.out.println("Aadhar Found");
+					System.out.println("Voter Number Found");
 
 					System.out.println("Name: " + cust.getName());
 					parcel.setSenderName(cust.getName());
@@ -112,11 +112,11 @@ public class CreateParcel {
 		case "3":
 			System.out.println("*ENTER SENDER DETAILS:**");
 
-			System.out.println("Enter AadharNo: ");
+			System.out.println("Enter Driving Licence No: ");
 			String DLNumber = sc.nextLine();
 			for (Customer cust : list) {
 				if (DLNumber.equals(cust.getDLNumber())) {
-					System.out.println("Aadhar Found");
+					System.out.println(" Driving Licence Number Found");
 
 					System.out.println("Name: " + cust.getName());
 					parcel.setSenderName(cust.getName());
@@ -171,7 +171,7 @@ public class CreateParcel {
 			String aadharNumber = sc.nextLine();
 			for (Customer cust : list) {
 				if (aadharNumber.equals(cust.getAadharNumber())) {
-					System.out.println("Aadhar Found");
+					System.out.println("Aadhar number Found");
 
 					System.out.println("Name: " + cust.getName());
 					parcel.setReceiverName(cust.getName());
@@ -194,7 +194,7 @@ public class CreateParcel {
 			String voterNumber = sc.nextLine();
 			for (Customer cust : list) {
 				if (voterNumber.equals(cust.getVoterNumber())) {
-					System.out.println("Aadhar Found");
+					System.out.println("VoterID Number Found");
 
 					System.out.println("Name: " + cust.getName());
 					parcel.setReceiverName(cust.getName());
@@ -213,11 +213,11 @@ public class CreateParcel {
 		case "3":
 			System.out.println("*ENTER RECEIVER DETAILS:**");
 
-			System.out.println("Enter AadharNo: ");
+			System.out.println("Enter Driving Licence No: ");
 			String DLNumber = sc.nextLine();
 			for (Customer cust : list) {
 				if (DLNumber.equals(cust.getDLNumber())) {
-					System.out.println("Aadhar Found");
+					System.out.println("Driving Licence Number Found");
 
 					System.out.println("Name: " + cust.getName());
 					parcel.setReceiverName(cust.getName());
